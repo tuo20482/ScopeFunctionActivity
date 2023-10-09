@@ -15,10 +15,19 @@ class MainActivity : AppCompatActivity() {
 
         // You can test your helper functions by  calling them from onCreate() and
         // printing their output to the Log, which is visible in the LogCat:
-        // eg. Log.d("function output", getTestDataArray().toString())
-
+        Log.d(
+            "getTestDataArray()",
+            "${getTestDataArray()}"
+        )
+        Log.d(
+            "averageLessThanMedian()",
+            "${averageLessThanMedian(listOf(5.5, 2.2, 3.3, 1.1, 4.4))}"
+        )
+        Log.d(
+            "getView()",
+            "${(getView(2, null, listOf(1, 2, 3, 4, 5), this) as TextView).text}"
+        )
     }
-
 
     /* Convert all the helper functions below to Single-Expression Functions using Scope Functions */
     // eg. private fun getTestDataArray() = ...
@@ -27,8 +36,8 @@ class MainActivity : AppCompatActivity() {
     // Look at the final/return value and build the function "working backwards"
 
     // Return a list of random, sorted integers
-    private fun getTestDataArray() : List<Int> {
-        val testArray = MutableList(10){ Random.nextInt()}
+    private fun getTestDataArray(): List<Int> {
+        val testArray = MutableList(10) { Random.nextInt() }
         testArray.sort()
         return testArray
     }
@@ -46,7 +55,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Create a view from an item in a collection, but recycle if possible (similar to an AdapterView's adapter)
-    private fun getView(position: Int, recycledView: View?, collection: List<Int>, context: Context): View {
+    private fun getView(
+        position: Int,
+        recycledView: View?,
+        collection: List<Int>,
+        context: Context
+    ): View {
         val textView: TextView
 
         if (recycledView != null) {
